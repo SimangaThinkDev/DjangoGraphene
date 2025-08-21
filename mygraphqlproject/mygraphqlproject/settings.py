@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'posts',
+    'graphene_django_filter',
 ]
 
 MIDDLEWARE = [
@@ -125,5 +126,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #  Adding endpoint for graphql API
 GRAPHENE = {
-    'SCHEMA': 'mygraphqlproject.schema.schema'
+    'SCHEMA': 'mygraphqlproject.schema.schema',
+    'RELAY_CONNECTION_FIELD_CLASS': 'graphene_django.filter.fields.DjangoFilterConnectionField',
 }

@@ -3,6 +3,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 from posts.models import Post
+from posts.schema import CreatePost
 
 
 class PostType(DjangoObjectType):
@@ -24,4 +25,8 @@ class Query(graphene.ObjectType):
         except Post.DoesNotExist:
             return None
 
-schema = graphene.Schema(query=Query)
+class Mutation(graphene.ObjectType):
+    create_post = CreatePost.Field()
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
